@@ -20,7 +20,9 @@ public class WebSecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .securityMatcher("/**")
                 .authorizeHttpRequests(
-                        registry -> registry.requestMatchers("/").permitAll()
+                        registry -> registry
+                                .requestMatchers("/").permitAll()
+                                .requestMatchers("/api/login").permitAll()
                                 .anyRequest().authenticated()
                 );
 
